@@ -7,7 +7,24 @@
   <meta name="author" content="李萌真" />
   <title>李萌真 · 个人主页</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FFD659'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' font-family='sans-serif' fill='%234A3B23'%3E%E8%90%8C%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css" id="mainCss" />
+  <!-- 发布兜底：有些平台（GitHub 网页上传）会把 css/ 目录压平，
+       主样式表 404 时改从同层加载，避免整页变成没有样式的纯文本 -->
+  <script>
+    (function () {
+      var link = document.getElementById('mainCss');
+      if (!link) return;
+      link.addEventListener('error', function () {
+        var alt = document.createElement('link');
+        alt.rel = 'stylesheet';
+        alt.href = 'style.css';
+        document.head.appendChild(alt);
+        document.querySelectorAll('img[src^="images/"]').forEach(function (img) {
+          img.src = img.getAttribute('src').replace(/^images\//, '');
+        });
+      });
+    })();
+  </script>
   <!-- 先给 <html> 打上 js 标记：只有在 JS 可用时才启用「滚动显现」的初始隐藏状态，
        即使脚本加载失败，页面内容也始终可见 -->
   <script>document.documentElement.classList.add('js');</script>
@@ -91,7 +108,7 @@
 
       <div class="hero-wave" aria-hidden="true">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" focusable="false">
-          <path d="M0,64 C240,120 420,0 720,32 C1020,64 1200,120 1440,48 L1440,120 L0,120 Z" fill="#FFFCF0" />
+          <path d="M0,64 C240,120 420,0 720,32 C1020,64 1200,120 1440,48 L1440,120 L0,120 Z" fill="#FFFCF0" fill-opacity="0.5" />
         </svg>
       </div>
     </section>

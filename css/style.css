@@ -56,11 +56,20 @@ body {
   margin: 0;
   color: var(--ink);
   background-color: var(--goose-100);
+  /* 两层背景：上层是鹅黄色薄纱（保证文字对比度），下层是背景图。
+     图片固定、按视口铺满，滚动时内容在上面滑过，背景不动。 */
   background-image:
-    radial-gradient(circle at 12% 8%, rgba(255, 211, 77, 0.35), transparent 42%),
-    radial-gradient(circle at 88% 22%, rgba(255, 124, 92, 0.12), transparent 38%),
-    radial-gradient(circle at 70% 82%, rgba(47, 179, 162, 0.10), transparent 40%);
-  background-attachment: fixed;
+    linear-gradient(
+      180deg,
+      rgba(255, 251, 240, 0.58) 0%,
+      rgba(255, 247, 224, 0.68) 50%,
+      rgba(255, 242, 203, 0.80) 100%
+    ),
+    url("../images/bg.jpg");
+  background-position: center center, center center;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
   font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Noto Sans SC",
     system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -297,7 +306,12 @@ button:focus-visible {
   position: relative;
   overflow: hidden;
   padding: 0;
-  background: linear-gradient(180deg, #FFF4CB 0%, #FFFAE9 55%, var(--goose-100) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 244, 203, 0.38) 0%,
+    rgba(255, 250, 233, 0.18) 55%,
+    rgba(255, 251, 240, 0.04) 100%
+  );
 }
 
 .hero-inner {
@@ -567,7 +581,11 @@ button:focus-visible {
 }
 
 .section-alt {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 245, 217, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.44),
+    rgba(255, 245, 217, 0.58)
+  );
   border-top: 1px solid rgba(245, 187, 24, 0.22);
   border-bottom: 1px solid rgba(245, 187, 24, 0.22);
 }
@@ -1059,7 +1077,7 @@ a.contact-value:hover {
 /* ---------- 10. 页脚 ---------- */
 .site-footer {
   padding: 54px 0 46px;
-  background: linear-gradient(180deg, var(--goose-100), #FFF2C6);
+  background: linear-gradient(180deg, rgba(255, 251, 240, 0.52), rgba(255, 242, 198, 0.72));
   border-top: 1px solid rgba(245, 187, 24, 0.35);
 }
 
